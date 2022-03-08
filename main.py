@@ -49,6 +49,35 @@ for surname in contacts_list:
 
 # pprint(contacts_list)
 
+sort_contacts_dict = {}
+
+for contact in contacts_list:
+
+
+
+  if contact[0] + ' ' + contact[1] in sort_contacts_dict:
+    if contact[6] != '':
+      sort_contacts_dict[contact[0] + ' ' + contact[1]][4] = contact[6]
+    if contact[5] != '':
+      sort_contacts_dict[contact[0] + ' ' + contact[1]][3] = contact[5]
+    if contact[4] != '':
+      sort_contacts_dict[contact[0] + ' ' + contact[1]][2] = contact[4]
+    if contact[3] != '':
+      sort_contacts_dict[contact[0] + ' ' + contact[1]][1] = contact[3]
+    if contact[2] != '':
+      sort_contacts_dict[contact[0] + ' ' + contact[1]][0] = contact[2]
+  else:
+    sort_contacts_dict[contact[0] + ' ' + contact[1]] = [contact[2], contact[3], contact[4], contact[5], contact[6]]
+
+
+
+contacts_list = []
+
+for key, value in sort_contacts_dict.items():
+  contacts_list.append(key.split()+value)
+
+pprint(contacts_list)
+
 
 # код для записи файла в формате CSV
 with open("phonebook.csv", "w") as f:
